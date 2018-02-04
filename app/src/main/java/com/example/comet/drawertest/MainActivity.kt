@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.*
+
 import android.widget.*
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.NetworkPolicy
@@ -26,7 +27,7 @@ import java.util.HashMap
 
 import java.sql.Types.NULL
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : DrawerActivity(){
 
 
     internal var arraylist = ArrayList<HashMap<String, String>>()
@@ -35,11 +36,14 @@ class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val framelayout = findViewById<View>(R.id.activity_frame) as FrameLayout
+        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val activityView = inflater.inflate(R.layout.activity_main, null, false)
+        framelayout.addView(activityView)
+
 
         val Pagenum = findViewById<View>(R.id.albumpage) as TextView
         val Pagenumber = Pagenum.text.toString()
-        supportActionBar!!.setTitle("우리학교앨범")
 
 
         try {
